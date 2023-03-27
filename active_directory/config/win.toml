@@ -1,0 +1,32 @@
+# See https://docs.bazc.io/plugins/windows for configuration details
+
+[win]
+plugin = "win_plugin"
+url = "localhost:60986"
+
+[win.params]
+#root domain name e.g "corp.bazc.com"
+domain = ""
+#domain username e.g. corp\freddy
+username = ""
+# password for the above account preferrably
+# through secure vault e.g. secret://secret.ldap.ad-password
+password = ""
+# CA public key certificate file in PEM format e.g
+# "file:///home/freddy/shared/CA.pem"
+ca_certs = ""
+
+[win.confparams]
+# See the AD test collection docs for further details.
+# Uncomment the below section to define filters
+
+# filter_list = []
+# f1.servers = []
+# f1.include.UserRightsAssignment = []
+# f1.include.AccountLockout = []
+# f1.include.Password = []
+# f1.include.Devices = []
+# f1.include.LocalAccount = []
+# f1.include.Audit = []
+# f1.include.DomainController = []
+# f1.include.DomainMember = []

@@ -1,0 +1,298 @@
+# Policy format -
+# The first keyword is the settings group for the setting e..g Password
+# The second keyword is the actual setting name e.g. PasswordHistorySize.
+# These setting keywords are Microsoft defined. Details on each one of them
+# is available on MS doc site.
+# The third key denotes the applicability of the policy i.e applicable
+# to Domain Controllers, Member Servers or Common(both).
+# Control - The actual policy value used by tests.
+
+[Password.PasswordHistorySize.Common]
+Control = 24
+
+[Password.MaximumPasswordAge.Common]
+Control = 365
+
+[Password.MinimumPasswordAge.Common]
+Control = 1
+
+[Password.MinimumPasswordLength.Common]
+Control = 14
+
+[Password.PasswordComplexity.Common]
+Control = 1
+
+[Password.RelaxMinimumPasswordLengthLimits.MemberServer]
+Control = true
+
+[Password.ClearTextPassword.Common]
+Control = 0
+
+[AccountLockout.LockoutDuration.Common]
+Control = 15
+
+[AccountLockout.LockoutBadCount.Common]
+Control = 5
+
+[AccountLockout.ResetLockoutCount.Common]
+Control = 15
+
+[UserRightsAssignment.SeTrustedCredManAccessPrivilege.Common]
+Control = []
+
+[UserRightsAssignment.SeNetworkLogonRight.DomainController]
+Control = [
+  'Administrators',
+  'NT AUTHORITY\Authenticated Users',
+  'NT AUTHORITY\ENTERPRISE DOMAIN CONTROLLERS',
+]
+
+[UserRightsAssignment.SeNetworkLogonRight.MemberServer]
+Control = ['Administrators', 'NT AUTHORITY\Authenticated Users']
+
+[UserRightsAssignment.SeTcbPrivilege.Common]
+Control = []
+
+[UserRightsAssignment.SeMachineAccountPrivilege.DomainController]
+Control = ['Administrators']
+
+[UserRightsAssignment.SeIncreaseQuotaPrivilege.Common]
+Control = [
+  'Administrators',
+  'NT AUTHORITY\LOCAL SERVICE',
+  'NT AUTHORITY\NETWORK SERVICE',
+]
+
+[UserRightsAssignment.SeIncreaseQuotaPrivilege.MemberServer.Roles]
+Web-Server-WSRole = [
+  'IIS APPPOOL\OCSPISAPIAppPool',
+  'IIS APPPOOL\DefaultAppPool',
+] # (IIS)Web server with web server role.
+MS-SQL = ['NT Service\SQLSERVERAGENT', 'NT Service\MSSQLSERVER']
+
+[UserRightsAssignment.SeInteractiveLogonRight.Common]
+Control = ['Administrators', 'Backup Operators']
+
+[UserRightsAssignment.SeRemoteInteractiveLogonRight.DomainController]
+Control = ['Administrator'] #Optional 'Remote Desktop Users'
+
+[UserRightsAssignment.SeRemoteInteractiveLogonRight.MemberServer]
+Control = ['Administrator', 'Remote Desktop Users']
+
+[UserRightsAssignment.SeRemoteInteractiveLogonRight.MemberServer.Roles]
+RDS-RDSCB = [
+  'NT AUTHORITY\Authenticated Users',
+] #Both Remote-Desktop-Services & RDS-Connection-Broker roles present on MS
+
+[UserRightsAssignment.SeBackupPrivilege.Common]
+Control = ['Administrators']
+
+[UserRightsAssignment.SeSystemtimePrivilege.Common]
+Control = ['Administrators', 'NT AUTHORITY\LOCAL SERVICE']
+
+[UserRightsAssignment.SeTimeZonePrivilege.Common]
+Control = ['Administrators', 'NT AUTHORITY\LOCAL SERVICE']
+
+[UserRightsAssignment.SeCreatePagefilePrivilege.Common]
+Control = ['Administrators']
+
+[UserRightsAssignment.SeCreateTokenPrivilege.Common]
+Control = []
+
+[UserRightsAssignment.SeCreateGlobalPrivilege.Common]
+Control = [
+  'Administrators',
+  'NT AUTHORITY\LOCAL SERVICE',
+  'NT AUTHORITY\NETWORK SERVICE',
+  'NT AUTHORITY\SERVICE',
+]
+[UserRightsAssignment.SeCreateGlobalPrivilege.MemberServer.Roles]
+MS-SQL = ['NT Service\SQLSERVERAGENT', 'NT Service\MSSQLSERVER']
+
+[UserRightsAssignment.SeCreatePermanentPrivilege.Common]
+Control = []
+
+[UserRightsAssignment.SeCreateSymbolicLinkPrivilege.DomainController]
+Control = ['Administrators']
+
+[UserRightsAssignment.SeCreateSymbolicLinkPrivilege.MemberServer]
+Control = ['Administrators']
+
+[UserRightsAssignment.SeCreateSymbolicLinkPrivilege.MemberServer.Roles]
+Hyper-V = ['NT VIRTUAL MACHINE\Virtual Machines']
+
+[UserRightsAssignment.SeDebugPrivilege.Common]
+Control = ['Administrators']
+
+[UserRightsAssignment.SeDenyNetworkLogonRight.DomainController]
+Control = ['Guests']
+
+[UserRightsAssignment.SeDenyNetworkLogonRight.MemberServer]
+Control = [
+  'Guests',
+  'NT AUTHORITY\Local account and member of Administrators group',
+]
+
+[UserRightsAssignment.SeDenyBatchLogonRight.Common]
+Control = ['Guests']
+
+[UserRightsAssignment.SeDenyServiceLogonRight.Common]
+Control = ['Guests']
+
+[UserRightsAssignment.SeDenyInteractiveLogonRight.Common]
+Control = ['Guests']
+
+[UserRightsAssignment.SeDenyRemoteInteractiveLogonRight.DomainController]
+Control = ['Guests']
+
+[UserRightsAssignment.SeDenyRemoteInteractiveLogonRight.MemberServer]
+Control = ['Guests', 'NT AUTHORITY\Local account']
+
+[UserRightsAssignment.SeEnableDelegationPrivilege.DomainController]
+Control = ['Administrators']
+
+[UserRightsAssignment.SeEnableDelegationPrivilege.MemberServer]
+Control = []
+
+[UserRightsAssignment.SeRemoteShutdownPrivilege.Common]
+Control = ['Administrators']
+
+[UserRightsAssignment.SeAuditPrivilege.Common]
+Control = ['NT AUTHORITY\LOCAL SERVICE', 'NT AUTHORITY\NETWORK SERVICE']
+
+[UserRightsAssignment.SeAuditPrivilege.MemberServer.Roles]
+Web-Server-WSRole = [
+  'IIS APPPOOL\OCSPISAPIAppPool',
+  'IIS APPPOOL\DefaultAppPool',
+] # (IIS)Web server with web server role.
+ADFS-Federation = ['NT SERVICE\adfssrv', 'NT SERVICE\DRS']
+
+[UserRightsAssignment.SeImpersonatePrivilege.Common]
+Control = [
+  'Administrators',
+  'NT AUTHORITY\LOCAL SERVICE',
+  'NT AUTHORITY\NETWORK SERVICE',
+  'NT AUTHORITY\SERVICE',
+]
+
+[UserRightsAssignment.SeImpersonatePrivilege.MemberServer.Roles]
+Web-Server-WSRole = ['IIS_IUSRS']
+MS-SQL = ['NT Service\SQLSERVERAGENT', 'NT Service\MSSQLSERVER']
+
+[UserRightsAssignment.SeIncreaseBasePriorityPrivilege.Common]
+Control = ['Administrators', 'Window Manager\Window Manager Group']
+
+[UserRightsAssignment.SeLoadDriverPrivilege.Common]
+Control = ['Administrators']
+
+[UserRightsAssignment.SeLockMemoryPrivilege.Common]
+Control = []
+
+[UserRightsAssignment.SeBatchLogonRight.DomainController]
+Control = ['Administrators']
+
+[UserRightsAssignment.SeSystemEnvironmentPrivilege.Common]
+Control = ['Administrators']
+
+[UserRightsAssignment.SeManageVolumePrivilege.Common]
+Control = ['Administrators']
+
+[UserRightsAssignment.SeManageVolumePrivilege.MemberServer.Roles]
+MS-SQL = ['NT Service\SQLSERVERAGENT', 'NT Service\MSSQLSERVER']
+
+[UserRightsAssignment.SeProfileSingleProcessPrivilege.Common]
+Control = ['Administrators']
+
+[UserRightsAssignment.SeSystemProfilePrivilege.Common]
+Control = ['Administrators', 'NT SERVICE\WdiServiceHost']
+
+[UserRightsAssignment.SeAssignPrimaryTokenPrivilege.Common]
+Control = ['NT AUTHORITY\LOCAL SERVICE', 'NT AUTHORITY\NETWORK SERVICE']
+
+[UserRightsAssignment.SeAssignPrimaryTokenPrivilege.MemberServer.Roles]
+Web-Server-WSRole = ['IIS_IUSRS']
+MS-SQL = ['NT Service\SQLSERVERAGENT', 'NT Service\MSSQLSERVER']
+
+[UserRightsAssignment.SeRestorePrivilege.Common]
+Control = ['Administrators']
+
+[UserRightsAssignment.SeShutdownPrivilege.Common]
+Control = ['Administrators']
+
+[UserRightsAssignment.SeSecurityPrivilege.Common]
+Control = ['Administrators']
+
+[UserRightsAssignment.SeSecurityPrivilege.Common.Roles]
+Exchange = ['Exchange Servers']
+
+[UserRightsAssignment.SeRelabelPrivilege.Common]
+Control = []
+
+[UserRightsAssignment.SeSyncAgentPrivilege.DomainController]
+Control = []
+
+[UserRightsAssignment.SeTakeOwnershipPrivilege.Common]
+Control = ['Administrators']
+
+[LocalAccount.EnableAdminAccount.MemberServer]
+Control = false
+
+[LocalAccount.'machine\software\microsoft\windows\currentversion\policies\system\noconnecteduser'.Common]
+Control = 3
+
+[LocalAccount.EnableGuestAccount.MemberServer]
+Control = false
+
+[LocalAccount.'machine\system\currentcontrolset\control\lsa\limitblankpassworduse'.Common]
+Control = 1
+
+[LocalAccount.NewAdministratorName.Common]
+Control = 'Administrator'
+
+[LocalAccount.NewGuestName.Common]
+Control = 'Guest'
+
+[Audit.'machine\system\currentcontrolset\control\lsa\auditbaseobjects'.Common]
+Control = 1
+
+[Audit.'machine\system\currentcontrolset\control\lsa\crashonauditfail'.Common]
+Control = 0
+
+[Devices.'machine\software\microsoft\windows nt\currentversion\winlogon\allocatedasd'.Common]
+Control = "0"
+
+[Devices.'machine\system\currentcontrolset\control\print\providers\lanman print services\servers\addprinterdrivers'.Common]
+Control = 1
+
+[DomainController.'machine\system\currentcontrolset\control\lsa\submitcontrol'.DomainController]
+Control = 0
+
+[DomainController.'machine\system\currentcontrolset\services\netlogon\parameters\vulnerablechannelallowlist'.DomainController]
+Control = []
+
+[DomainController.'machine\system\currentcontrolset\services\ntds\parameters\ldapenforcechannelbinding'.DomainController]
+Control = 2
+
+[DomainController.'machine\system\currentcontrolset\services\ntds\parameters\ldapserverintegrity'.DomainController]
+Control = 1
+
+[DomainController.'machine\system\currentcontrolset\services\netlogon\parameters\refusepasswordchange'.DomainController]
+Control = 0
+
+[DomainMember.'machine\system\currentcontrolset\services\netlogon\parameters\requiresignorseal'.Common]
+Control = 1
+
+[DomainMember.'machine\system\currentcontrolset\services\netlogon\parameters\sealsecurechannel'.Common]
+Control = 1
+
+[DomainMember.'machine\system\currentcontrolset\services\netlogon\parameters\signsecurechannel'.Common]
+Control = 1
+
+[DomainMember.'machine\system\currentcontrolset\services\netlogon\parameters\disablepasswordchange'.Common]
+Control = 0
+
+[DomainMember.'machine\system\currentcontrolset\services\netlogon\parameters\maximumpasswordage'.Common]
+Control = 30
+
+[DomainMember.'machine\system\currentcontrolset\services\netlogon\parameters\requirestrongkey'.Common]
+Control = 1
