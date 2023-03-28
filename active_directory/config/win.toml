@@ -1,20 +1,20 @@
 # See https://docs.bazc.io/plugins/windows for configuration details
 
 [win]
-plugin = "win_plugin"
-url = "localhost:60986"
+plugin = 'win_plugin'
+url = 'localhost:60986'
 
 [win.params]
-#root domain name e.g "corp.bazc.com"
-domain = ""
+#root domain name e.g 'corp.bazc.com'
+domain = ''
 #domain username e.g. corp\freddy
-username = ""
+username = ''
 # password for the above account preferrably
-# through secure vault e.g. secret://secret.ldap.ad-password
-password = ""
+# through secure vault e.g. secret://secret.ad.password
+password = ''
 # CA public key certificate file in PEM format e.g
-# "file:///home/freddy/shared/CA.pem"
-ca_certs = ""
+# 'file:///home/freddy/shared/CA.pem'
+ca_certs = ''
 
 [win.confparams]
 # See the AD test collection docs for further details.
