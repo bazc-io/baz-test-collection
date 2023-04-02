@@ -4,9 +4,10 @@ Baz system provides a toolset to help you ascertain the current state of your IT
 ## Flow Diagram
 ![Flow](https://docs.bazc.io/img/baz-flow-white.svg)
 
-Baz system [documentation](https://docs.bazc.io/).
+## Get Started
+Documentation site - **[Quick Start Guide](https://docs.bazc.io/quickstart)**
 
 # baz-test-collection
 Collections are a grouping of tests that you can run in your environment. They enable you to test an aspect of your infrastructure. For example, the active directory collection allows you to test Active Directory group policies.
 
-Reach out to dev@bazc.io for baz system builds.
+Reach out to dev@bazc.io for any assistance or open a PR!
