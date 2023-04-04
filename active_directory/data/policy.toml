@@ -23,7 +23,7 @@ Control = 14
 Control = 1
 
 [Password.RelaxMinimumPasswordLengthLimits.MemberServer]
-Control = true
+Control = 1
 
 [Password.ClearTextPassword.Common]
 Control = 0
@@ -235,13 +235,13 @@ Control = []
 Control = ['Administrators']
 
 [LocalAccount.EnableAdminAccount.MemberServer]
-Control = false
+Control = 0
 
 [LocalAccount.'machine\software\microsoft\windows\currentversion\policies\system\noconnecteduser'.Common]
 Control = 3
 
 [LocalAccount.EnableGuestAccount.MemberServer]
-Control = false
+Control = 0
 
 [LocalAccount.'machine\system\currentcontrolset\control\lsa\limitblankpassworduse'.Common]
 Control = 1
@@ -251,6 +251,9 @@ Control = 'Administrator'
 
 [LocalAccount.NewGuestName.Common]
 Control = 'Guest'
+
+[LocalAccount.LSAAnonymousNameLookup.Common]
+Control = 0
 
 [Audit.'machine\system\currentcontrolset\control\lsa\auditbaseobjects'.Common]
 Control = 1
@@ -296,3 +299,128 @@ Control = 30
 
 [DomainMember.'machine\system\currentcontrolset\services\netlogon\parameters\requirestrongkey'.Common]
 Control = 1
+
+[InteractiveLogon.'machine\software\microsoft\windows\currentversion\policies\system\disablecad'.Common]
+Control = 0
+
+[InteractiveLogon.'machine\software\microsoft\windows\currentversion\policies\system\dontdisplaylastusername'.Common]
+Control = 1
+
+[InteractiveLogon.'machine\software\microsoft\windows\currentversion\policies\system\inactivitytimeoutsecs'.Common]
+Control = 900
+
+# Add  the legal notice of your organization in the control value as text list
+[InteractiveLogon.'machine\software\microsoft\windows\currentversion\policies\system\legalnoticetext'.Common]
+Control = ['Legal Notice']
+
+# Add  the legal notice caption of your organization in the control value as text
+[InteractiveLogon.'machine\software\microsoft\windows\currentversion\policies\system\legalnoticecaption'.Common]
+Control = "Legal Notice Caption"
+
+
+[InteractiveLogon.'machine\software\microsoft\windows nt\currentversion\winlogon\cachedlogonscount'.Common]
+Control = 4
+
+[InteractiveLogon.'machine\software\microsoft\windows nt\currentversion\winlogon\passwordexpirywarning'.Common.Control]
+LowLimit = 5
+HighLimit = 14
+
+[InteractiveLogon.'machine\software\microsoft\windows nt\currentversion\winlogon\forceunlocklogon'.Common]
+Control = 1
+
+[InteractiveLogon.'machine\software\microsoft\windows nt\currentversion\winlogon\scremoveoption'.Common]
+Control = ["1", "2", "3"]
+
+[NetworkClient.'machine\system\currentcontrolset\services\lanmanworkstation\parameters\requiresecuritysignature'.Common]
+Control = 1
+
+[NetworkClient.'machine\system\currentcontrolset\services\lanmanworkstation\parameters\enablesecuritysignature'.Common]
+Control = 1
+
+[NetworkClient.'machine\system\currentcontrolset\services\lanmanworkstation\parameters\enableplaintextpassword'.Common]
+Control = 0
+
+[NetworkServer.'machine\system\currentcontrolset\services\lanmanserver\parameters\autodisconnect'.Common]
+Control = 15
+
+[NetworkServer.'machine\system\currentcontrolset\services\lanmanserver\parameters\requiresecuritysignature'.Common]
+Control = 1
+
+[NetworkServer.'machine\system\currentcontrolset\services\lanmanserver\parameters\enablesecuritysignature'.Common]
+Control = 1
+
+[NetworkServer.'machine\system\currentcontrolset\services\lanmanserver\parameters\enableforcedlogoff'.Common]
+Control = 1
+
+[NetworkServer.'machine\system\currentcontrolset\services\lanmanserver\parameters\smbservernamehardeninglevel'.MemberServer]
+Control = [1, 2]
+
+[NetworkAccess.'machine\system\currentcontrolset\control\lsa\restrictanonymoussam'.MemberServer]
+Control = 1
+
+[NetworkAccess.'machine\system\currentcontrolset\control\lsa\restrictanonymous'.MemberServer]
+Control = 1
+
+[NetworkAccess.'machine\system\currentcontrolset\control\lsa\disabledomaincreds'.Common]
+Control = 1
+
+[NetworkAccess.'machine\system\currentcontrolset\control\lsa\everyoneincludesanonymous'.Common]
+Control = 0
+
+[NetworkAccess.'machine\system\currentcontrolset\services\lanmanserver\parameters\nullsessionpipes'.DomainController]
+# BROWSER role for Computer Browser service is not added considering it uses
+# SMBv1 that's deprecated since 2014. See - https://techcommunity.microsoft.com/t5/storage-at-microsoft/stop-using-smb1/ba-p/425858
+# The BROWSER named pipe may need to be added to this list if the Computer
+# Browser service is needed for supporting legacy components. The Computer Browser service is disabled by default
+Control = ['LSARPC', 'netlogon', 'samr']
+
+[NetworkAccess.'machine\system\currentcontrolset\services\lanmanserver\parameters\nullsessionpipes'.MemberServer]
+# BROWSER role for Computer Browser service is not added considering it uses
+# SMBv1 that's deprecated since 2014. See - https://techcommunity.microsoft.com/t5/storage-at-microsoft/stop-using-smb1/ba-p/425858
+# The BROWSER named pipe may need to be added to this list if the Computer
+# Browser service is needed for supporting legacy components. The Computer Browser service is disabled by default
+Control = []
+
+[NetworkAccess.'machine\system\currentcontrolset\services\lanmanserver\parameters\nullsessionpipes'.MemberServer.Roles]
+RDS-RDS-Licensing = ['HydraLSPipe', 'TermServLicensing']
+
+[NetworkAccess.'machine\system\currentcontrolset\control\securepipeservers\winreg\allowedexactpaths\machine'.Common]
+Control = [
+  'System\CurrentControlSet\Control\ProductOptions',
+  'System\CurrentControlSet\Control\Server Applications',
+  'Software\Microsoft\Windows NT\CurrentVersion',
+]
+
+[NetworkAccess.'machine\system\currentcontrolset\control\securepipeservers\winreg\allowedpaths\machine'.Common]
+Control = [
+  'System\CurrentControlSet\Control\Print\Printers',
+  'System\CurrentControlSet\Services\Eventlog',
+  'Software\Microsoft\OLAP Server',
+  'Software\Microsoft\Windows NT\CurrentVersion\Print',
+  'Software\Microsoft\Windows NT\CurrentVersion\Windows',
+  'System\CurrentControlSet\Control\ContentIndex',
+  'System\CurrentControlSet\Control\Terminal Server',
+  'System\CurrentControlSet\Control\Terminal Server\UserConfig',
+  'System\CurrentControlSet\Control\Terminal Server\DefaultUserConfiguration',
+  'Software\Microsoft\Windows NT\CurrentVersion\Perflib',
+  'System\CurrentControlSet\Services\SysmonLog',
+]
+
+[NetworkAccess.'machine\system\currentcontrolset\control\securepipeservers\winreg\allowedpaths\machine'.Common.Roles]
+# The WINS path is not added as it's considered legacy now
+AD-ADCS-Cert-Authority = ['System\CurrentControlSet\Services\CertSvc']
+
+[NetworkAccess.'machine\system\currentcontrolset\services\lanmanserver\parameters\restrictnullsessaccess'.Common]
+Control = 1
+
+# If your organization is using Azure Advanced Threat Protection (APT), the
+# service account, ATP Service will need to be added to the recommendation
+# configuration.
+[NetworkAccess.'machine\system\currentcontrolset\control\lsa\restrictremotesam'.MemberServer]
+Control = "O:BAG:BAD:(A;;RC;;;BA)"
+
+[NetworkAccess.'machine\system\currentcontrolset\services\lanmanserver\parameters\nullsessionshares'.Common]
+Control = []
+
+[NetworkAccess.'machine\system\currentcontrolset\control\lsa\forceguest'.Common]
+Control = 0

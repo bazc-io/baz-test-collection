@@ -95,3 +95,49 @@ Common = [
   'testMachineMaximumPasswordAge', #Added Machine to function name due to name collision with Password Policy test case.
   'testRequireStrongKey',
 ]
+
+[InteractiveLogon]
+Common = [
+  'testDisableCAD',
+  'testDontDisplayLastUsername',
+  'testInactivityTimeoutSecs',
+  'testLegalNoticeText',
+  'testLegalNoticeCaption',
+  'testPasswordExpiryWarning',
+  'testSCRemoveOption',
+]
+MemberServer = ['testCachedLogonsCount', 'testForceUnlockLogon']
+
+[NetworkClient]
+Common = [
+  'testRequireSecuritySignature',
+  'testEnableSecuritySignature',
+  'testEnablePlainTextPassword',
+]
+
+[NetworkServer]
+Common = [
+  'testAutoDisconnect',
+  'testNSRequireSecuritySignature',
+  'testNSEnableSecuritySignature',
+  'testNSEnableForcedLogoff',
+]
+MemberServer = ['testSMBServerNameHardeningLevel']
+
+[NetworkAccess]
+Common = [
+  'testAutoDisconnect',
+  'testDisableDomainCreds',
+  'testEveryoneIncludesAnonymous',
+  'testNullSessionPipes',
+  'testAllowedExactPaths',
+  'testAllowedPaths',
+  'testRestrictNullSessAccess',
+  'testNullSessionShares',
+  'testForceGuest',
+]
+MemberServer = [
+  'testRestrictAnonymousSAM',
+  'testRestrictAnonymous',
+  'testRestrictRemoteSAM',
+]

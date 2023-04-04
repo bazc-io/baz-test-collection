@@ -15,7 +15,7 @@
 function testRequireSignorSeal(registry, dmPolicy) {
   let key = 'machine\\system\\currentcontrolset\\services\\netlogon\\parameters\\requiresignorseal';
   verify(registry[key],
-    "testRequireSignorSeal not in accordance with policy").
+    "RequireSignorSeal not in accordance with policy").
     to.be.eql(dmPolicy[key].Control);
 }
 
@@ -68,11 +68,11 @@ function testMachineMaximumPasswordAge(registry, dmPolicy) {
   const PWD_NEVER_EXPIRE = 0;
 
   verify(registry[key],
-    "MachineMaximumPasswordAge not in accordance with policy").
+    "MaximumPasswordAge(Machine) not in accordance with policy").
     to.not.equal(PWD_NEVER_EXPIRE);
 
   verify(registry[key],
-    "MachineMaximumPasswordAge not in accordance with policy").
+    "MaximumPasswordAge(Machine) not in accordance with policy").
     to.be.at.most(dmPolicy[key].Control);
 }
 
