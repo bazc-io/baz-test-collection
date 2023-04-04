@@ -177,6 +177,18 @@ function setPolicyParams(polProcessor, serverType) {
       case 'DomainMember':
         key = 'dmPolicy';
         break;
+      case 'InteractiveLogon':
+        key = 'intPolicy';
+        break;
+      case 'NetworkClient':
+        key = 'ncPolicy';
+        break;
+      case 'NetworkServer':
+        key = 'nsPolicy';
+        break;
+      case 'NetworkAccess':
+        key = 'naPolicy';
+        break;
       default:
         logger.Debug()?.Msg('Unsupported policy settings group - ' + params);
         break;

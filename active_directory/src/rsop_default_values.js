@@ -29,7 +29,7 @@ let rsopDefaultValues =
       "Common": 1
     },
     "RelaxMinimumPasswordLengthLimits": {
-      "MemberServer": false
+      "MemberServer": 0
     },
     "ClearTextPassword": {
       "Common": 0
@@ -294,16 +294,19 @@ let rsopDefaultValues =
   },
   "LocalAccount": {
     "EnableAdminAccount": {
-      "MemberServer": false
+      "MemberServer": 0
     },
     "EnableGuestAccount": {
-      "MemberServer": false
+      "MemberServer": 0
     },
     "NewAdministratorName": {
       "Common": "Administrator"
     },
     "NewGuestName": {
       "Common": "Guest"
+    },
+    "LSAAnonymousNameLookup": {
+      "Common": 0
     }
   },
   "Registry": {
@@ -357,6 +360,105 @@ let rsopDefaultValues =
     },
     "machine\\system\\currentcontrolset\\services\\netlogon\\parameters\\requirestrongkey": {
       "Common": 1
+    },
+    "machine\\software\\microsoft\\windows\\currentversion\\policies\\system\\disablecad": {
+      "Common": 1
+    },
+    "machine\\software\\microsoft\\windows\\currentversion\\policies\\system\\dontdisplaylastusername": {
+      "Common": 0
+    },
+    "machine\\software\\microsoft\\windows\\currentversion\\policies\\system\\inactivitytimeoutsecs": {
+      "Common": 0
+    },
+    "machine\\software\\microsoft\\windows\\currentversion\\policies\\system\\legalnoticetext": {
+      "Common": [""]
+    },
+    "machine\\software\\microsoft\\windows\\currentversion\\policies\\system\\legalnoticecaption": {
+      "Common": ""
+    },
+    "machine\\software\\microsoft\\windows nt\\currentversion\\winlogon\\cachedlogonscount": {
+      "Common": 10
+    },
+    "machine\\software\\microsoft\\windows nt\\currentversion\\winlogon\\passwordexpirywarning": {
+      "Common": 5
+    },
+    "machine\\software\\microsoft\\windows nt\\currentversion\\winlogon\\forceunlocklogon": {
+      "Common": 0
+    },
+    "machine\\software\\microsoft\\windows nt\\currentversion\\winlogon\\scremoveoption": {
+      "Common": "0"
+    },
+    "machine\\system\\currentcontrolset\\services\\lanmanworkstation\\parameters\\requiresecuritysignature": {
+      "Common": 0
+    },
+    "machine\\system\\currentcontrolset\\services\\lanmanworkstation\\parameters\\enablesecuritysignature": {
+      "Common": 1
+    },
+    "machine\\system\\currentcontrolset\\services\\lanmanworkstation\\parameters\\enableplaintextpassword": {
+      "Common": 0
+    },
+    "machine\\system\\currentcontrolset\\services\\lanmanserver\\parameters\\autodisconnect": {
+      "Common": 15
+    },
+    "machine\\system\\currentcontrolset\\services\\lanmanserver\\parameters\\requiresecuritysignature": {
+      "MemberServer": 0,
+      "DomainController": 1
+    },
+    "machine\\system\\currentcontrolset\\services\\lanmanserver\\parameters\\enablesecuritysignature": {
+      "MemberServer": 0,
+      "DomainController": 1
+    },
+    "machine\\system\\currentcontrolset\\services\\lanmanserver\\parameters\\enableforcedlogoff": {
+      "Common": 1
+    },
+    "machine\\system\\currentcontrolset\\services\\lanmanserver\\parameters\\smbservernamehardeninglevel": {
+      "MemberServer": 0
+    },
+    "machine\\system\\currentcontrolset\\control\\lsa\\restrictanonymoussam": {
+      "MemberServer": 1
+    },
+    "machine\\system\\currentcontrolset\\control\\lsa\\restrictanonymous": {
+      "MemberServer": 0
+    },
+    "machine\\system\\currentcontrolset\\control\\lsa\\disabledomaincreds": {
+      "Common": 0
+    },
+    "machine\\system\\currentcontrolset\\control\\lsa\\everyoneincludesanonymous": {
+      "Common": 0
+    },
+    "machine\\system\\currentcontrolset\\services\\lanmanserver\\parameters\\nullsessionpipes": {
+      "Common": []
+    },
+    "machine\\system\\currentcontrolset\\control\\securepipeservers\\winreg\\allowedexactpaths\\machine": {
+      "Common": ["System\\CurrentControlSet\\Control\\ProductOptions",
+        "System\\CurrentControlSet\\Control\\Server Applications",
+        "Software\\Microsoft\\Windows NT\\CurrentVersion"
+      ]
+    },
+    "machine\\system\\currentcontrolset\\control\\securepipeservers\\winreg\\allowedpaths\\machine": {
+      "Common": ["System\\CurrentControlSet\\Control\\Print\\Printers",
+        "System\\CurrentControlSet\\Services\\Eventlog",
+        "Software\\Microsoft\\OLAP Server",
+        "Software\\Microsoft\\Windows NT\\CurrentVersion\\Print",
+        "Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows",
+        "System\\CurrentControlSet\\Control\\ContentIndex",
+        "System\\CurrentControlSet\\Control\\Terminal Server",
+        "System\\CurrentControlSet\\Control\\Terminal Server\\UserConfig",
+        "System\\CurrentControlSet\\Control\\Terminal Server\\DefaultUserConfiguration",
+        "Software\\Microsoft\\Windows NT\\CurrentVersion\\Perflib",
+        "System\\CurrentControlSet\\Services\\SysmonLog"]
+    },
+    "machine\\system\\currentcontrolset\\services\\lanmanserver\\parameters\\restrictnullsessaccess": {
+      "Common": 1
+    },
+    "machine\\system\\currentcontrolset\\control\\lsa\\restrictremotesam": {
+      "MemberServer": "O:BAG:BAD:(A;;RC;;;BA)"
+    },
+    "machine\\system\\currentcontrolset\\services\\lanmanserver\\parameters\\nullsessionshares": {
+      "Common": []
+    },
+    "machine\\system\\currentcontrolset\\control\\lsa\\forceguest": {
+      "Common": 0
     }
   }
 }
