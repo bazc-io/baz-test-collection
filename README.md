@@ -1,6 +1,10 @@
 # Baz System
 Baz system provides a toolset to help you ascertain the current state of your IT infrastructure and measure it against a desired state. This is achieved through a series of fine-grained tests that can be run on your infrastructure. The Baz system introduces a software engineering-style test-driven approach to system security by treating applications and hosts as programmable entities.
 
+The basic idea of the solution is to run tests and ascertain if the aspects being tested match the desired state. In cases where the expectation doesn't match reality, tests fail. The difference between the states is recorded in a report. This exercise helps you see what's wrong today and how the environment evolves.
+
+The primary programming language for test code in Baz is ECMAScript Version 6. Using full-fledged Turing complete language to describe the desired state of a complex environment means that all vagaries and complexities can be captured without resorting to glue scripts and other ad-hoc measures. Also, since ES6, i.e., JavaScript, is widely used, there is no need to learn a new language or new tools/IDEs.
+
 ## Flow Diagram
 ![Flow](https://docs.bazc.io/img/baz-flow-white.svg)
 
