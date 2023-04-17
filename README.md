@@ -12,8 +12,10 @@ The primary programming language for test code in Baz is ECMAScript Version 6. U
 Collections are a grouping of tests that you can run in your environment. They enable you to test an aspect of your infrastructure. For example, the active directory collection allows you to test Active Directory group policies.
 
 # QuickStart
-
 Use this QuickStart guide to explore the Baz system.
+
+## Example
+This example writes different types of data to JSON files, and then tests read & verify the contents. The files are removed after the tests complete.
 
 1. Download the bazcli build.
 
@@ -45,7 +47,7 @@ Use this QuickStart guide to explore the Baz system.
    sudo yum install ./bazcli-0.1.4-1.x86_64.rpm
    ```
 
-3. Execute the example tests from `butils_json.js`  present under `/opt/bazc/bazcli/examples/`. The example writes different types of data to JSON files, and then tests read & verify those contents.
+3. Execute the example tests from `butils_json.js`  present under `/opt/bazc/bazcli/examples/`.
 
    ```bash
    /opt/bazc/bazcli/bin/bazcli test /opt/bazc/bazcli/examples/butils_json.js --output=report.csv
@@ -61,9 +63,7 @@ Use this QuickStart guide to explore the Baz system.
 
 
 
-## Feeling Adventurous :smile_cat:
-
-### Verify CIS Windows 2022 Benchmark
+## Next - Verify CIS Windows 2022 Benchmark :blue_book:
 
 Quickly test Active Directory Group Policies against the CIS benchmark through the Active Directory test collection. For detailed information on the Baz system and collections, please see the **[introduction](https://docs.bazc.io/)** and the **[collection](https://docs.bazc.io/collections/adcollection)** pages.
 
@@ -101,14 +101,14 @@ Quickly test Active Directory Group Policies against the CIS benchmark through t
 
      ```toml
      [win]
-      plugin = 'win_plugin'
-      url = 'localhost:60986'
+     plugin = 'win_plugin'
+     url = 'localhost:60986'
 
-      [win.params]
-      domain = 'corp.bazc.com'
-      username = 'corp\freddy'
-      password = 'secret://secret.ad.password'
-      ca_certs = 'file:///home/freddy/shared/CA.pem'
+     [win.params]
+     domain = 'corp.bazc.com'
+     username = 'corp\freddy'
+     password = 'secret://secret.ad.password'
+     ca_certs = 'file:///home/freddy/shared/CA.pem'
      ```
 
 5. Run the test on your AD environment with the below command -
@@ -121,4 +121,4 @@ Quickly test Active Directory Group Policies against the CIS benchmark through t
 
 6. Verify the result in the generated **report.csv** file.
 
- Take it for a spin and open an issue or PR! You can reach out to dev@bazc.io for any assistance.
+ Take it for a spin and open an issue or PR! You can also reach out to dev@bazc.io for any assistance.
