@@ -1,0 +1,32 @@
+# Replace place-holders (XXXX) with values of your environment
+# E.g - ldap
+# [ldap.params]
+# host = "ldaps://ldap1.test"
+# cacert = "file:///home/freddy/lab/certs/ca/ca.pem"
+# dn = "cn=freddy,dc=corp,dc=bazc,dc=com"
+# password = "secret://secret.ldap.password"
+
+# E.g - okta
+# [okta.params]
+# domain = "dev-00000042-admin.okta.com"
+# ssws_token = "secret://secret.okta.token"
+
+[ldap]
+plugin = "ldap_plugin"
+url = "localhost:60389"
+
+[ldap.params]
+host = "ldaps://XXXX.com"
+cacert = "file://XXXX/XXXX/XXXX.pem"
+auth = "simpleBind"
+dn = "cn=XXXX,dc=XXXX,dc=XXXX,dc=XXX"
+password = "secret://XXXX.XXXX.XXXX"
+
+
+[okta]
+plugin = "okta_plugin"
+url = "localhost:60051"
+
+[okta.params]
+domain = "XXXX.okta.com"
+ssws_token = "secret://XXXX.XXXX.XXXX"
