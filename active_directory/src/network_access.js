@@ -15,7 +15,7 @@
 function testLSAAnonymousNameLookup(accounts, accountsPolicy) {
   verify(accounts.LSAAnonymousNameLookup,
     "LSAAnonymousNameLookup not in accordance with policy").
-    to.be.EQL(accountsPolicy.LSAAnonymousNameLookup.Control);
+    to.be.eql(accountsPolicy.LSAAnonymousNameLookup.Control);
 }
 
 /**

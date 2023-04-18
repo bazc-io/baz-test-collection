@@ -1,0 +1,25 @@
+[okta_stage]
+plugin = 'okta_plugin'
+url = 'localhost:60051'
+
+[okta_stage.params]
+# Add the okta tenant URL for domain
+domain = ''
+# Specify the API token key, preferably through vault.
+ssws_token = ''
+
+[okta_stage.confparams]
+
+[okta_stage.confparams.threat_insight]
+# Possible values configured - 'audit' or 'block'
+action = 'block'
+
+[okta_stage.confparams.zone_data]
+# Change the name of the zone to match your Okta tenant config
+# Specify the file path where the ip-address data is stored
+# IP data is expected as JSON in a file.
+# Add all zones configured in your Okta tenant. e.g
+# BlockedIpZone-China = '/home/freddy/tests/data/blocklist.json'
+
+[okta_stage.confparams.identity]
+dormant_days = 45
