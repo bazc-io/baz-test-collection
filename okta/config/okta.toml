@@ -8,10 +8,6 @@ domain = ''
 # Specify the API token key, preferably through vault.
 ssws_token = ''
 
-[okta_stage.confparams.failure_data]
-# Define file to enable failure data being written to the JSON file
-# file = '/home/freddy/tests/data/failure_data.json'
-
 [okta_stage.confparams.threat_insight]
 # Possible values configured - 'audit' or 'block'
 action = 'block'
