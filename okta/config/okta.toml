@@ -8,8 +8,6 @@ domain = ''
 # Specify the API token key, preferably through vault.
 ssws_token = ''
 
-[okta_stage.confparams]
-
 [okta_stage.confparams.threat_insight]
 # Possible values configured - 'audit' or 'block'
 action = 'block'
