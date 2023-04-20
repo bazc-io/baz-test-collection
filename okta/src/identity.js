@@ -8,39 +8,46 @@
  */
 
 /**
- * @description Verify that there are no active dormant accounts
+ * @description No active dormant accounts where last
+ * login is older than policy
  * @severity High
  */
-function testDormantAccount() {
+function testDormantAccounts() {
   // The number of days before an account is considered dormant
-  // Defaults to 45 days if not defined by policy in actor config
-  let dormantPolicy = 45;
+  // Defaults to 45 days if not defined by policy
+  const dormant = 45;
 
   // Get the policy from actor cofig
-  let userDormantPolciy = okta_stage.getConfParam('identity');
-  if ((typeof userDormantPolciy != 'undefined') &&
-    (userDormantPolciy.dormant_days)) {
-    dormantPolicy = userDormantPolciy.dormant_days;
-  }
+  let dormantPolicy = getPropertyWithDefault('identity',
+    'dormant_days', dormant);
 
   // Get the list of all active users from Okta
-  let activeUsers = okta_stage.ListUsers('status eq "ACTIVE"');
+  let activeUsers = actor.ListUsers('status eq "ACTIVE"');
 
-  let nowSeconds = new Date().getTime() / 1000;
+  let now = new Date();
 
-  // For each active user check if the last login is greater than the policy
-  // Warn for users that have never logged into Okta.
+  // For each active user, check if the last login is greater than the policy
+  // Use activation date for users that have never logged into Okta.
   activeUsers.forEach(user => {
+    let lastLogin = user.lastLogin;
     if (user.lastLogin === null) {
-      logger.Warn()?.Msg('Last login null for user - ' + user.profile.email);
-      return;
-    }
-    let daysSinceLastLogin = ((nowSeconds -
-      new Date(user.lastLogin).getTime() / 1000) /
-      (60 * 60 * 24));
+      logger.Warn()?.Msg('Last login null for user - ' +
+        user.profile.email);
 
-    verify(daysSinceLastLogin, "Last login for user - " +
-      user.profile.email + ' older than allowed by policy.').
-      to.be.at.most(dormantPolicy);
+      logger.Debug()?.Msg('Using account activation date/time for ' +
+        user.profile.email + ' as the last login time');
+      lastLogin = user.activated;
+    }
+
+    let daysSinceLastLogin = Math.round(
+      (now - new Date(lastLogin)) /
+      (1000 * 60 * 60 * 24)
+    );
+
+    let errMsg = "Last login for user (" +
+      user.profile.email + ') - ' + daysSinceLastLogin +
+      ' days, older than allowed by policy';
+
+    verify(daysSinceLastLogin, errMsg).to.be.at.most(dormantPolicy);
   });
 }

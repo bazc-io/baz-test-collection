@@ -16,7 +16,6 @@
  * 2. For each domain, find list of all domain controllers and member servers.
  * 2. For each server, run the appropriate set of tests.
  */
-
 function setup() {
   // Make sure the actor is intialized, else bail out.
   if (typeof win === 'undefined') {
