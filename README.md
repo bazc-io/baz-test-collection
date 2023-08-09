@@ -12,7 +12,7 @@ The primary programming language for test code in Baz is ECMAScript Version 6. U
 Collections are a grouping of tests that you can run in your environment. They enable you to test an aspect of your infrastructure. For example, the active directory collection allows you to test Active Directory group policies.
 
 # QuickStart
-Use this QuickStart guide to explore the Baz system.
+Use this [QuickStart](https://docs.bazc.io/quickstart) guide to explore the Baz system.
 
 ## Example
 This example writes different types of data to JSON files, and then tests read & verify the contents. The files are removed after the tests complete.
